@@ -34,4 +34,14 @@ Mystring::~Mystring() {
   delete this->str;
 }
 
+Mystring &Mystring::operator=(const Mystring &rhs) {
+  if (this != &rhs) {
+    delete this->str;
+    this->str = new char[std::strlen(rhs.str) + 1];
+    std::strcpy(this->str, rhs.str);
+  }
+  std::cout << "Assignment operator has called." << std::endl;
+  return *this;
+}
+
 const char *Mystring::get_str() const { return this->str; };
