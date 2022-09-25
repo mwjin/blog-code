@@ -20,6 +20,13 @@ Mystring::Mystring(const char *str) : str{nullptr} {
   }
 }
 
+Mystring::Mystring(const Mystring &rhs) : str{nullptr} {
+  this->str = new char[std::strlen(rhs.str) + 1];
+  std::strcpy(this->str, rhs.str);
+  std::cout << "Copy constructor for \"" << rhs.str << "\" has called."
+            << std::endl;
+}
+
 Mystring::~Mystring() {
   if (std::strlen(this->str) == 0)
     std::cout << "The empty string";
