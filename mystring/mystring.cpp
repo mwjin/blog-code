@@ -25,7 +25,18 @@ Mystring::Mystring(const Mystring &rhs) : Mystring{rhs.str} {
             << std::endl;
 }
 
+Mystring::Mystring(Mystring &&rhs) noexcept {
+  std::cout << "Move constructor for \"" << rhs.str << "\" has called."
+            << std::endl;
+  this->str = rhs.str;
+  rhs.str = nullptr;
+}
+
 Mystring::~Mystring() {
+  if (!this->str) {
+    std::cout << "Delete Mystring object with nullptr" << std::endl;
+    return;
+  }
   if (std::strlen(this->str) == 0)
     std::cout << "The empty string";
   else
