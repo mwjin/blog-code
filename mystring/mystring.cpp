@@ -45,3 +45,12 @@ Mystring &Mystring::operator=(const Mystring &rhs) {
 }
 
 const char *Mystring::get_str() const { return this->str; };
+
+Mystring operator+(const Mystring &lhs, const Mystring &rhs) {
+  char *buff{new char[std::strlen(lhs.str) + std::strlen(rhs.str) + 1]};
+  std::strcpy(buff, lhs.str);
+  std::strcat(buff, rhs.str);
+  Mystring result{buff};
+  delete[] buff;
+  return result;
+}

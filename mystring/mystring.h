@@ -1,6 +1,7 @@
 class Mystring {
  private:
   char *str;
+  friend Mystring operator+(const Mystring &lhs, const Mystring &rhs);
 
  public:
   Mystring();
