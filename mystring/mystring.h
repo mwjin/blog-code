@@ -10,5 +10,6 @@ class Mystring {
   Mystring(Mystring &&rhs) noexcept;
   ~Mystring();
   Mystring &operator=(const Mystring &rhs);
+  Mystring &operator=(Mystring &&rhs);
   const char *get_str() const;
 };

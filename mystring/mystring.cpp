@@ -51,7 +51,16 @@ Mystring &Mystring::operator=(const Mystring &rhs) {
     this->str = new char[std::strlen(rhs.str) + 1];
     std::strcpy(this->str, rhs.str);
   }
-  std::cout << "Assignment operator has called." << std::endl;
+  std::cout << "Copy assignment operator has called." << std::endl;
+  return *this;
+}
+
+Mystring &Mystring::operator=(Mystring &&rhs) {
+  if (this != &rhs) {
+    this->str = rhs.str;
+    rhs.str = nullptr;
+  }
+  std::cout << "Move assignment operator has called." << std::endl;
   return *this;
 }
 
